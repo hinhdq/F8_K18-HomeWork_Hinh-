@@ -222,15 +222,18 @@ label {
     padding-bottom: 1rem;
     margin-bottom: 1rem;
     border-bottom: 0.0625rem solid #eee;
+    text-align: center;
 }
 
 .modal-heading h2{
     font-size: 1.5rem;
     font-weight: 700;
     color: #1e293b;
-    float: left;
-    width: 20rem;
-    margin-right: 0.5rem;
+    /*float: left;*/
+    /*width: 20rem;*/
+    /*margin-right: 0.5rem;*/
+    width: auto;
+    margin: 0;
 }
 
 .modal-heading h2 span{
@@ -305,12 +308,14 @@ label {
     cursor: pointer;
     transition: background-color 0.3s ;
     margin: 0 0.5rem;
+    white-space: nowrap;
 }
 
 .start-now{
     background-color: #a855f7;
     color: #fff;
-    width: 10rem;
+    min-width: 10rem;
+    width: auto;
 }
 
 .start-now:hover{
@@ -351,3 +356,15 @@ label {
     opacity: 0;
     transition: opacity 0.3s, visibility 0.3s;
 }
+
+
+#modal-toggle:checked ~ .modal-overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+#modal-toggle:checked ~ .modal-dialog {
+    visibility: visible;
+    opacity: 1;
+}
+
