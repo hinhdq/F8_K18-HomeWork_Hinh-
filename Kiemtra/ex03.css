@@ -1,0 +1,350 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-image: url(https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?q=80&w=2070&auto=format&fit=crop);
+  font-family: Arial, Helvetica, sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* --- NỘI DUNG CHÍNH --- */
+.webf8 {
+  max-width: 62.5rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin: 0.625rem 3.125rem;
+  font-size: 3rem;
+  color: #1e293b;
+  font-weight: 700;
+  padding-top: 1rem;
+  line-height: 1.2;
+}
+
+.heading {
+  color: #a855f7;
+  font-weight: 700;
+  display: block;
+}
+
+.heading-title {
+  font-size: 1.125rem;
+  text-align: center;
+  padding-top: 1rem;
+  color: #334155;
+  font-weight: 400;
+  max-width: 43.75rem;
+  margin: 0 auto;
+}
+
+/* --- NÚT BẤM TRANG CHỦ --- */
+.free, .advise {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  border: transparent;
+  cursor: pointer;
+  margin: 2rem 0.5rem 0;
+  transition: background-color 0.3s;
+  /* Nút free và advise đều là label, cần display: inline-block để hoạt động như nút */
+  display: inline-block;
+}
+
+.free {
+  background-color: #a855f7;
+  color: #fff;
+}
+
+.advise{
+  background-color: #d17227;
+  color: #fff;
+}
+
+.free:hover {
+  background-color: #9333ea;
+}
+
+.advise:hover {
+  background-color: #9e3600;
+}
+
+/* ... (Phần CSS trang chủ khác) ... */
+
+/* --- LỢI ÍCH CHECKEDV (FLOAT) --- */
+.checkedv { overflow: hidden; padding: 2rem 0 4rem; text-align: center; }
+.benefit-item { float: left; width: 18rem; margin: 0.5rem 1rem; overflow: hidden; text-align: left; }
+.img { width: 1rem; height: 1rem; float: left; margin-right: 0.5rem; margin-top: 0.1rem; }
+.spancmt { padding-right: 0; color: #334155; font-weight: 400; font-size: 1rem; float: left; }
+
+/* --- FOOTER --- */
+.footer { padding-top: 2rem; padding-bottom: 1rem; text-align: center; background-color: #faefef; margin-top: 2rem; }
+.textend { border-top: 0.125rem solid rgba(192, 132, 252, 0.6); padding-top: 2rem; font-size: 0.875rem; }
+
+
+/* ========================================================= */
+/* --- CÔNG CỤ CHUNG CHO MODAL VÀ OVERLAY --- */
+/* ========================================================= */
+/* Ẩn Modal và Overlay mặc định */
+.modal-dialog, .modal-overlay,
+.advise-modal-dialog, .advise-modal-overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Căn chỉnh chung cho Modal dialog */
+.modal-dialog, .advise-modal-dialog {
+  position: fixed;
+  /* QUAN TRỌNG: Thêm position: relative để định vị tuyệt đối nút đóng */
+  position: relative;
+
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  z-index: 1000;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+/* Căn chỉnh chung cho Overlay */
+.modal-overlay, .advise-modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000000;
+  z-index: 999;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* --- Căn chỉnh chung cho Modal Heading và nút đóng (Close Button) --- */
+.modal-heading {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.0625rem solid #eee;
+  text-align: center;
+}
+
+.modal-heading h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  width: auto;
+  margin: 0;
+}
+
+.close-btn {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  line-height: 1.5rem;
+  padding: 0 0.5rem;
+  z-index: 1001;
+}
+.close-btn:hover { color: #a855f7; }
+
+
+/* ========================================================= */
+/* --- QUY TẮC KÍCH HOẠT MODAL 1 (BẮT ĐẦU HỌC) --- */
+/* ========================================================= */
+#modal-toggle:checked ~ .modal-overlay,
+#modal-toggle:checked ~ .modal-dialog {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-dialog {
+  width: 30rem;
+  height: 33rem;
+  margin-top: -16.5rem;
+  margin-left: -15rem;
+}
+
+/* Sửa nút BẮT ĐẦU NGAY không xuống dòng */
+.modal-btn {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ;
+  margin: 0 0.5rem;
+  white-space: nowrap;
+}
+.start-now {
+  background-color: #a855f7;
+  color: #fff;
+  min-width: 15rem;
+  width: auto;
+}
+.later{
+  background-color: #eee;
+  color: #334155;
+  width: 7rem;
+}
+.modal-footer .upgrade { margin-top: 1.5rem; font-size: 0.875rem; color: #555; }
+
+
+/* ========================================================= */
+/* --- QUY TẮC KÍCH HOẠT MODAL 2 (ĐĂNG KÝ TƯ VẤN) --- */
+/* ========================================================= */
+#advise-toggle:checked ~ .advise-modal-overlay,
+#advise-toggle:checked ~ .advise-modal-dialog {
+  visibility: visible;
+  opacity: 1;
+}
+
+.advise-modal-dialog {
+  /* Điều chỉnh kích thước Modal Tư vấn */
+  width: 35rem;
+  height: 40rem;
+  margin-top: -20rem; /* - Nửa chiều cao */
+  margin-left: -17.5rem; /* - Nửa chiều rộng */
+}
+
+/* --- Form Body --- */
+.advise-modal-body {
+  padding: 0 1rem;
+  text-align: left;
+  color: #334155;
+}
+
+.advise-title {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Form --- */
+.advise-form label {
+  display: block;
+  padding-left: 0;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.advise-form input[type="text"],
+.advise-form input[type="tel"],
+.advise-form input[type="email"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+/* --- Checkbox Group --- */
+.checkbox-group-title {
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-group {
+  padding: 0.5rem 0;
+  /* Dùng float để các item nằm ngang */
+  overflow: hidden;
+}
+
+.checkbox-item {
+  /* Đặt float cho mỗi item */
+  float: left;
+  width: 50%;
+  margin-top: 0.5rem;
+  white-space: nowrap;
+}
+
+.checkbox-item input[type="checkbox"] {
+  float: left;
+  margin-right: 0.5rem;
+  margin-top: 0.15rem;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.checkbox-item .checkbox-label {
+  float: left;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+/* --- Nút Gửi --- */
+.advise-submit-btn {
+  /* Tạo nút lớn, màu cam/tím như hình */
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #f97316; /* Màu cam */
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.advise-submit-btn:hover {
+  background-color: #ea580c;
+}
+
+/* ========================================================= */
+/* --- TOOLTIP KHI HOVER INPUT (Không dùng JS) --- */
+/* ========================================================= */
+.advise-form input[type="text"]:hover::after,
+.advise-form input[type="tel"]:hover::after,
+.advise-form input[type="email"]:hover::after {
+  content: attr(title); /* Lấy nội dung từ thuộc tính title */
+
+  /* Định vị tooltip */
+  position: absolute;
+  z-index: 1002;
+  background: #333;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+
+  /* Vị trí (phía dưới input) */
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none; /* Rất quan trọng để không cản trở click */
+}
+
+/* Để Tooltip hoạt động, chúng ta cần đặt input container (hoặc input trực tiếp) là relative */
+.advise-form input[type="text"],
+.advise-form input[type="tel"],
+.advise-form input[type="email"] {
+  /* QUAN TRỌNG: Để Tooltip::after hoạt động */
+  position: relative;
+}
