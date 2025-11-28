@@ -81,7 +81,7 @@ html {
     left: 0;
     background: #ffffff;
     border: 1px solid #dddddd;
-    min-width: 160px;
+    min-width: 200px;
     z-index: 1000;
     padding: 6px 0;
 }
@@ -127,13 +127,20 @@ html {
 
 .header-main nav li > ul li > ul li a {
     padding: 10px 16px;
-    display: block;
+    display: inline-block;
     white-space: nowrap;
 }
 
-.header-main nav li > ul li > ul li + li {
-    border-top: 1px solid #e7e7e7;
+
+.header-main nav li > ul li {
+    position: relative;
 }
 
 
-
+.header-main nav li > ul li > span {
+    position: absolute;
+    right: 10px;  
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+}
