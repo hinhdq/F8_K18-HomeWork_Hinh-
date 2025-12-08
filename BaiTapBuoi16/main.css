@@ -326,6 +326,8 @@
     padding: 50px 30px 30px 30px;
     border: 1px solid #F1F1F3;
     border-radius: 12px;
+    flex: 1;
+    min-width: 320px;
 }
 
 .pricing--plan p:first-child{
@@ -423,7 +425,7 @@
     border-style: none;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    width: 643px;
+    width: 100%;
     color: white;
     cursor: pointer;
     font-weight: 600;
