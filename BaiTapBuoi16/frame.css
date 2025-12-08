@@ -1,0 +1,83 @@
+.frame-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.frame-logo {
+    background-image: url(./icon/unlock.svg);
+    width: 25px;
+    height: 30px;
+    background-color: #FFF4E5;
+    padding: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 6px;
+    border: 14px solid #fff4e5;
+    margin-right: 10px;
+}
+
+.frame-socsoc {
+    position: absolute;
+    top: 160px;
+    left: 520px;
+
+}
+
+.frame-text {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 14px 30px;
+    border-radius: 11px;
+}
+
+.frame-text h1 {
+    font-weight: 600;
+    font-size: 48px;
+}
+
+.frame-text h1 > span {
+    color: #FF9500;
+    font-size: 48px;
+}
+
+.frame-cmt {
+    margin: 20px;
+    text-align: center;
+}
+
+.frame-cmt h2 {
+    font-size: 38px;
+    font-weight: 500;
+    color: #262626;
+    margin: 10px;
+}
+
+.frame-cmt > p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #262626;
+    margin-bottom: 60px;
+}
+.frame-button button:first-child {
+    background-color: #FF9500;
+    color: white;
+    padding: 14px 34px;
+    border: 1px solid #FF9500;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.frame-button button:last-child {
+    background-color: white;
+    color: #262626;
+    padding: 14px 34px;
+    border: 1px solid white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+}
