@@ -21,7 +21,7 @@ const updatePartTime: PartTimeI = {
 
 console.log(updatePartTime);
 
-// Lesson 2
+// Ex 2
 
 interface Employee {
     id: number;
